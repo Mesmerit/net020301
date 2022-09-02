@@ -42,7 +42,7 @@ public class CardTest {
     void testFormOk() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
-        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иван Иванов");
+        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
         form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876543232");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
@@ -58,7 +58,7 @@ public class CardTest {
 
         form.findElement(By.cssSelector("[data-test-id='name'] input"))
                 .sendKeys("Лиза Тарасова-Гаевская");
-        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79234567878");
+        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876543232");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText();
@@ -71,18 +71,18 @@ public class CardTest {
     void testFormNoCheckBox() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
-        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Стив Возняк");
-        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876345687");
+        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
+        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876543232");
         form.findElement(By.cssSelector(".button_view_extra")).click();
         form.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid"));
     }
 
     @Test
-    void testFormLatinSymbols() {
+    void testFormLatSymbols() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
         form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Ivanov Ivan");
-        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876542323");
+        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876543232");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
         String text = form.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText();
@@ -95,8 +95,8 @@ public class CardTest {
     void testFormSpecialSymbols() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
-        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иван& Иванов");
-        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998889898");
+        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов! Иван");
+        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876543232");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
         String text = form.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText();
@@ -106,7 +106,7 @@ public class CardTest {
     }
 
     @Test
-    void testFormEmptyNameAndPhone() {
+    void testEmptyForm() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -117,10 +117,10 @@ public class CardTest {
     }
 
     @Test
-    void testFormEmptyName() {
+    void testEmptyName() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
-        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876345687");
+        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79876543232");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
         String text = form.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText();
@@ -129,10 +129,10 @@ public class CardTest {
     }
 
     @Test
-    void testFormEmptyPhone() {
+    void testEmptyPhone() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
-        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Стив Возняк");
+        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
         String text = form.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText();
@@ -141,10 +141,10 @@ public class CardTest {
     }
 
     @Test
-    void testFormShortPhone() {
+    void testShortPhone() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
-        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Стив Возняк");
+        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
         form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+7921");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
@@ -154,11 +154,11 @@ public class CardTest {
     }
 
     @Test
-    void testFormPhoneWithoutPlus() {
+    void testPhoneWithoutPlus() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
         form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
-        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("79875553322");
+        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("79876543232");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
         String text = form.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText();
@@ -167,7 +167,7 @@ public class CardTest {
     }
 
     @Test
-    void testFormWithSpaces() {
+    void testWithSpaces() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
         form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
@@ -180,10 +180,10 @@ public class CardTest {
     }
 
     @Test
-    void testFormWithHyphen() {
+    void testWithHyphen() {
         WebElement form = driver.findElement(By.cssSelector("form"));
 
-        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Стив Возняк");
+        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
         form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+7987-111-23-45");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector(".button_view_extra")).click();
@@ -191,18 +191,4 @@ public class CardTest {
 
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", text.trim());
     }
-
-    @Test
-    void testFormPhoneLetter() {
-        WebElement form = driver.findElement(By.cssSelector("form"));
-
-        form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Стив Возняк");
-        form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("телефон");
-        form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        form.findElement(By.cssSelector(".button_view_extra")).click();
-        String text = form.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText();
-
-        assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", text.trim());
-    }
-
 }
